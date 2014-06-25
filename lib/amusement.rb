@@ -22,4 +22,16 @@ class Amusement
     }
     output 
   end
+  
+  def country(country)
+    output ={}
+    resort_array = []
+    @data.each do |resort|
+      if resort[:country] == country
+        resort_array << resort
+        output[country] = resort_array
+      end
+    end
+    output
+  end
 end
