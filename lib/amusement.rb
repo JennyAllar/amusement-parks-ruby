@@ -13,10 +13,13 @@ class Amusement
     end
     name_array[0]
   end
-  
+
   def parse
-   count = @data.map {|resort| {resort[:id] => resort}}.length
-   @data.map {|resort| {resort[:id] => resort}}.take(count)
-  
-   end
+    output ={}
+    @data.map { |resort| 
+      output[resort[:id]] = resort 
+    
+    }
+    output 
   end
+end
