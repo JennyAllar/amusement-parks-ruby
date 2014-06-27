@@ -16,13 +16,13 @@ class Amusement
 
   def parse
     output ={}
-    @data.map { |resort| 
-      output[resort[:id]] = resort 
-    
+    @data.map { |resort|
+      output[resort[:id]] = resort
+
     }
-    output 
+    output
   end
-  
+
   def country(country)
     output ={}
     resort_array = []
@@ -31,6 +31,28 @@ class Amusement
         resort_array << resort
         output[country] = resort_array
       end
+    end
+    output
+  end
+
+  def by_country
+    hash = {}
+    @data.each do |info|
+      country = info[:country]
+      hash[country] ||= []
+      hash[country] << info
+    end
+    hash
+  end
+
+
+  def country_state
+    output = {}
+    @data.each do |resort|
+      country = resort[:country]
+      state = resort[:state]
+      output[state + ', ' + country] ||= []
+      output[state + ', ' + country] << resort
     end
     output
   end
